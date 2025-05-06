@@ -12,6 +12,14 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Set;
+use Illuminate\Support\Str;
+use Filament\Tables\Columns\TextColumn;
+
+
 
 class ProductCategoryResource extends Resource
 {
@@ -25,7 +33,25 @@ class ProductCategoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Section::make('Product Category')
+                    ->schema([
+                        TextInput::make('name')
+                            ->label('Nama Kategori')
+                            ->required()
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                            ->maxLength(255),
+                        TextInput::make('slug')
+                            ->label('Slug')
+                            ->required()
+                            ->maxLength(255),
+                        Textarea::make('description')
+                            ->label('Deskripsi')
+                            ->rows(3)
+                            ->columnSpanFull()
+                            ->autosize(),
+                    ])
+                    ->columns(2),
             ]);
     }
 
@@ -33,19 +59,28 @@ class ProductCategoryResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->label('Nama Kategori')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array

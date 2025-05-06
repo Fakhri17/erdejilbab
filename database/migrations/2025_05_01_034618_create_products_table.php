@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('product_category_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('product_image')->nullable();
+            $table->json('product_images')->nullable();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->string('size')->nullable();

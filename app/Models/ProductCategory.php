@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductCategory extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+    ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
