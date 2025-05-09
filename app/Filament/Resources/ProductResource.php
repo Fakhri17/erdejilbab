@@ -120,9 +120,9 @@ class ProductResource extends Resource
                 TextColumn::make('is_published')
                     ->label('Status')
                     ->badge()
-                    ->getStateUsing(fn($record) => $record->is_published === 1 ? 'Published' : 'Draft')
-                    ->color(fn($record) => $record->is_published === 1 ? 'success' : 'danger')
-                    ->icon(fn($record) => $record->is_published === 1 ? 'heroicon-o-check-circle' : 'heroicon-o-x-circle')
+                    ->getStateUsing(fn($record) => $record->is_published ? 'Published' : 'Draft')
+                    ->color(fn($record) => $record->is_published ? 'success' : 'danger')
+                    ->icon(fn($record) => $record->is_published ? 'heroicon-o-check-circle' : 'heroicon-o-x-circle')
                     ->sortable(),
             ])->filters([
                 //
