@@ -42,18 +42,29 @@ class SiteSettings extends Page implements HasForms
                     TextInput::make('phone_number')
                         ->tel()
                         ->label('Nomor Telepon'),
-                    TextInput::make('address')
-                        ->label('Alamat'),
-                    Textarea::make('store_description')
-                        ->label('Deskripsi Toko')
-                        ->rows(4),
-                    FileUpload::make('store_logo')
-                        ->label('Logo')
-                        ->image()
-                        ->acceptedFileTypes(['image/*'])
-                        ->maxSize(2048)
-                        ->imageEditor()
-                        ->directory('images'),
+                    // TextInput::make('address')
+                    //     ->label('Alamat'),
+                    // Textarea::make('store_description')
+                    //     ->label('Deskripsi Toko')
+                    //     ->rows(4),
+                    TextInput::make('tiktok_link')
+                        ->label('Link TikTok')
+                        ->url()
+                        ->placeholder('https://tiktok.com/@username')
+                        ->helperText('Masukkan link TikTok produk'),
+                    TextInput::make('shopee_link')
+                        ->label('Link Shopee')
+                        ->url()
+                        ->placeholder('https://shopee.co.id/username')
+                        ->helperText('Masukkan link Shopee produk'),
+
+                    // FileUpload::make('store_logo')
+                    //     ->label('Logo')
+                    //     ->image()
+                    //     ->acceptedFileTypes(['image/*'])
+                    //     ->maxSize(2048)
+                    //     ->imageEditor()
+                    //     ->directory('images'),
                     // FileUpload::make('store_banner')->label('Banner')
                     //     ->image()->directory('banners')->imagePreviewHeight('150'),
                 ]),

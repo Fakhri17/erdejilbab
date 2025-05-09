@@ -16,6 +16,8 @@ class Product extends Model
         'color',
         'is_published',
         'product_category_id',
+        'tiktok_link',
+        'shopee_link',
     ];
 
     protected $casts = [

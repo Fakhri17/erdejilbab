@@ -19,10 +19,23 @@ class SiteSetting extends Model
         'store_email',
         'phone_number',
         'address',
+        'tiktok_link',
+        'shopee_link',
     ];
 
     public static function getGlobal(){
         return self::first();
+    }
+
+    public function getWaUrlAttribute()
+    {
+        $phone = preg_replace('/[^0-9]/', '', $this->phone_number);
+
+        if (substr($phone, 0, 1) === '0') {
+            $phone = '62' . substr($phone, 1);
+        }
+        
+        return 'https://wa.me/' . $phone;
     }
 
 

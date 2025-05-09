@@ -2,6 +2,12 @@
 
 @section('title', 'Home')
 
+@php
+  $shoppeLink = $siteSetting->shopee_link ?? '#';
+  $tiktokLink = $siteSetting->tiktok_link ?? '#';
+  $waUrl = $siteSetting->wa_url ?? '#';
+@endphp
+
 @section('content')
   <!-- Hero Section -->
   <!-- Hero Section -->
@@ -88,7 +94,7 @@
       <div class="block lg:flex items-center justify-between mb-6 pb-4">
         <p class="text-base text-gray-700 font-medium mb-3 lg:mb-0">Pilihan Terbaik untuk Tampil Cantik dan Syar'i Setiap
           Hari</p>
-        <a href="#" class="font-bold text-[#946756] hover:text-[#E48786] flex items-center gap-2">Lihat Semua
+        <a href="{{ route('products.index') }}" class="font-bold text-[#946756] hover:text-[#E48786] flex items-center gap-2">Lihat Semua
           <iconify-icon icon="ep:arrow-right-bold"></iconify-icon></a>
       </div>
 
@@ -98,19 +104,20 @@
       <div class="relative z-10">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <!-- Produk Card -->
-          @for ($i = 0; $i < 3; $i++)
+          @foreach ($products as $product)
             <div class="bg-white border border-gray-300 rounded-xl p-4">
-              <img src="{{ asset('assets/prodimg.png') }}" alt="Pashmina Crinkle Erdejilbab"
+              <img src="{{ $product->image_url[0] }}" alt="{{ $product->name }}"
                 class="rounded-lg mb-4 w-full h-60 object-cover">
               <div class="flex flex-col items-center">
-                <h3 class="font-bold text-xl text-[#946756]">Pashmina Crinkle Erdejilbab</h3>
-                <p class="text-sm text-gray-700 font-medium my-4 text-center mx-4">Model Pashmina yang sedang hits....</p>
+                <h3 class="font-bold text-xl text-[#946756]">{{ $product->name }}</h3>
+                <p class="text-sm text-gray-700 font-medium my-4 text-center mx-4">{{ $product->description }}</p>
                 <a href="#"
                   class="inline-block text-sm px-5 py-2 font-semibold text-[#946756] rounded-md border border-gray-500 hover:border-[#E48786] hover:bg-[#E48786] hover:text-white transition duration-200">Lihat
                   Produk</a>
               </div>
             </div>
-          @endfor
+          @endforeach
+
         </div>
       </div>
     </div>
@@ -126,44 +133,41 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
         <!-- Shopee -->
-        <div
-          class="border-2 border-gray-300 hover:border-[#E48786] rounded-xl p-10 bg-white transition duration-300">
+        <div class="border-2 border-gray-300 hover:border-[#E48786] rounded-xl p-10 bg-white transition duration-300">
           <div class="flex flex-col items-center md:items-start text-center md:text-left">
             <iconify-icon icon="tabler:brand-shopee" width="48" height="48" class="mb-3"></iconify-icon>
             <h1 class="font-bold text-xl mb-2">Shopee</h1>
             <p class="text-sm text-gray-700 font-medium mb-4">
               Dapatkan produk Erdejilbab di Shopee dengan promo menarik!
             </p>
-            <a href="#"
+            <a href="{{ $shoppeLink }}" target="_blank"
               class="inline-block text-sm px-5 py-2 font-semibold text-[#946756] rounded-md border border-gray-500 
               hover:border-[#E48786] hover:bg-[#E48786] hover:text-white transition duration-200">
               Kunjungi</a>
           </div>
         </div>
         <!-- WhatsApp -->
-        <div
-          class="border-2 border-gray-300 hover:border-[#E48786] rounded-xl p-10 bg-white transition duration-300">
+        <div class="border-2 border-gray-300 hover:border-[#E48786] rounded-xl p-10 bg-white transition duration-300">
           <div class="flex flex-col items-center md:items-start text-center md:text-left">
             <iconify-icon icon="ic:baseline-whatsapp" width="48" height="48" class="mb-3"></iconify-icon>
             <h1 class="font-bold text-xl mb-2">WhatsApp</h1>
             <p class="text-sm text-gray-700 font-medium mb-4">
               Hubungi kami langsung untuk konsultasi & pemesanan.
             </p>
-            <a href="#"
+            <a href="{{ $waUrl }}" target="_blank"
               class="inline-block text-sm px-5 py-2 font-semibold text-[#946756] rounded-md border-2 border-gray-300 
               hover:border-[#E48786] hover:bg-[#E48786] hover:text-white transition duration-200">Hubungi</a>
           </div>
         </div>
         <!-- TikTok -->
-        <div
-          class="border-2 border-gray-300 hover:border-[#E48786] rounded-xl p-10 bg-white transition duration-300">
+        <div class="border-2 border-gray-300 hover:border-[#E48786] rounded-xl p-10 bg-white transition duration-300">
           <div class="flex flex-col items-center md:items-start text-center md:text-left">
             <iconify-icon icon="mingcute:tiktok-line" width="48" height="48" class="mb-3"></iconify-icon>
             <h1 class="font-bold text-xl mb-2">TikTok</h1>
             <p class="text-sm text-gray-700 font-medium mb-4">
               Temukan koleksi dari video kami dan checkout tanpa ribet!
             </p>
-            <a href="#"
+            <a href="{{ $tiktokLink }}" target="_blank"
               class="inline-block text-sm px-5 py-2 font-semibold text-[#946756] rounded-md border-2 border-gray-300 hover:border-[#E48786] 
               hover:bg-[#E48786] hover:text-white transition duration-200">Kunjungi</a>
           </div>
