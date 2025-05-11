@@ -89,13 +89,20 @@ class ProductResource extends Resource
                                 'numberedList',
                                 'link',
                             ]),
+                        // tiktok link
+                        TextInput::make('tiktok_link')
+                            ->label('Tiktok Link')
+                            ->url()
+                            ->placeholder('https://www.tiktok.com/@username/video/1234567890'),
+                        // shopee link
+                        TextInput::make('shopee_link')
+                            ->label('Shopee Link')
+                            ->url()
+                            ->placeholder('https://shopee.co.id/product/1234567890'),
+                        
                         Checkbox::make('is_published')
                             ->label('Is Published')
                             ->helperText('Centang jika produk sudah siap dipublikasikan.'),
-
-
-
-
                     ])
                     ->columns(2),
             ]);

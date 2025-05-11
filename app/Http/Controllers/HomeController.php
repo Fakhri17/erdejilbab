@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $products = Product::latest()->take(3)->get();
+        $products = Product::query()->where('is_published', true)->latest()->take(3)->get();
         $siteSetting = SiteSetting::first();
         return view('index', compact('products', 'siteSetting'));
     }

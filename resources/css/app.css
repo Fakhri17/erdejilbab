@@ -11,4 +11,16 @@
     body {
         font-family: 'Poppins', sans-serif;
     }
+
+    .button-whatsapp {
+        @apply w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-xl font-medium rounded-lg border border-transparent bg-green-500 text-white hover:bg-green-600 focus:outline-hidden focus:bg-green-600 disabled:opacity-50 disabled:pointer-events-none;
+    }
+
+    .button-shopee {
+        @apply w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-xl font-medium rounded-lg border border-transparent bg-orange-500 text-white hover:bg-orange-600 focus:outline-hidden focus:bg-orange-600 disabled:opacity-50 disabled:pointer-events-none;
+    }
+
+    .button-tiktok {
+        @apply w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-xl font-medium rounded-lg border border-transparent bg-black text-white hover:bg-black/80 focus:outline-hidden focus:bg-black/80 disabled:opacity-50 disabled:pointer-events-none;
+    }
 }

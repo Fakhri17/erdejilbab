@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Product::query()->where('is_published', true);
+        $query = Product::query()->where('is_published', true)->latest();
         
         // Filter by category
         if ($request->has('category')) {
@@ -32,5 +32,11 @@ class ProductController extends Controller
         $categories = ProductCategory::all();
         
         return view('products.index', compact('products', 'categories'));
+    }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)->firstOrFail();
+        return view('products.show', compact('product'));
     }
 }

@@ -11,7 +11,7 @@
           fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m15 18-6-6 6-6"></path>
         </svg>
-        <span class="hidden sm:block">Previous</span>
+        <span class="hidden sm:block">Sebelumnya</span>
       </button>
     @else
       <a href="{{ $paginator->previousPageUrl() }}"
@@ -54,7 +54,7 @@
       <button type="button" disabled
         class="min-h-9.5 min-w-9.5 py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm first:rounded-s-lg last:rounded-e-lg border border-gray-200 text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
         aria-label="Next">
-        <span class="hidden sm:block">Next</span>
+        <span class="hidden sm:block">Selanjutnya</span>
         <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">

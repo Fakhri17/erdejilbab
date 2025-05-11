@@ -35,15 +35,5 @@ class Product extends Model
     {
         return 'slug';
     }
-
-    public function getImageUrlAttribute()
-    {
-        if (is_array($this->product_images) && count($this->product_images) > 0) {
-            return array_map(function ($image) {
-                return url('storage/' . $image);
-            }, $this->product_images);
-        }
-
-        return ['https://placehold.co/600x400'];
-    }
+      
 }
