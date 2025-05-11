@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $product->name)
+
 @section('content')
   <section class="pt-24 pb-12">
     <div class="container mx-auto px-4 py-8">
