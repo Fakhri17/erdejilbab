@@ -117,9 +117,9 @@
       <!-- Judul -->
       <div class="flex items-center gap-2">
         <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold">
-          Produk <span class="text-[#e48786]">Erdejilbab</span>
+          Produk <span class="text-secondary">Erdejilbab</span>
         </h1>
-        <span class="text-lg sm:text-xl md:text-2xl text-gray-500">({{ $products->count() }})</span>
+        <span class="text-lg sm:text-xl md:text-2xl text-gray-500">({{ $products->total() }})</span>
       </div>
 
       @if(request('search') && $products->isEmpty())
@@ -185,7 +185,7 @@
                       Rp{{ number_format($product->price, 0, ',', '.') }}
                     </p>
                     <a href="#"
-                      class="inline-block px-3 py-1.5 text-sm font-bold text-[#946756] rounded-md border border-gray-400 hover:border-[#E48786] hover:bg-[#E48786] hover:text-white transition duration-200">
+                      class="inline-block px-3 py-1.5 text-sm font-bold text-secondary rounded-md border border-gray-400 hover:border-secondary hover:bg-secondary hover:text-white transition duration-200">
                       Lihat Produk
                     </a>
                   </div>
@@ -201,6 +201,16 @@
             @endif
           @endforelse
 
+      </div>
+
+      <!-- Pagination Section -->
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-sm text-gray-800 font-semibold">
+          Menampilkan {{ $products->firstItem() ?? 0 }} sampai {{ $products->lastItem() ?? 0 }} dari {{ $products->total() }} produk
+        </div>
+        <div>
+          <x-pagination :paginator="$products->appends(request()->query())" />
+        </div>
       </div>
     </div>
   </section>

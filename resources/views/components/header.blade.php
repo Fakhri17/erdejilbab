@@ -1,3 +1,18 @@
+@php
+$navItems = [
+    [
+        'name' => 'Beranda',
+        'url' => '/',
+        'isActive' => request()->is('/')
+    ],
+    [
+        'name' => 'List Produk',
+        'url' => '/list-produk',
+        'isActive' => request()->is('list-produk*')
+    ]
+];
+@endphp
+
 <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-5 shadow">
   <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
     <div class="flex items-center justify-between">
@@ -30,11 +45,11 @@
       class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow sm:block"
       aria-labelledby="hs-navbar-example-collapse">
       <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-        <a class="{{ request()->is('/') ? 'font-bold text-[#946756]' : 'font-medium text-black' }} text-base hover:text-[#E48786] focus:outline-hidden" 
-          href="/" 
-          aria-current="{{ request()->is('/') ? 'page' : 'false' }}">Beranda</a>
-        <a class="{{ request()->is('list-produk*') ? 'font-bold text-[#946756]' : 'font-medium text-black' }} text-base hover:text-[#E48786] focus:outline-hidden focus:text-[#E48786]"
-          href="/list-produk">List Produk</a>
+        @foreach($navItems as $item)
+          <a class="{{ $item['isActive'] ? 'font-bold text-secondary' : 'font-medium text-black' }} text-base hover:text-secondary focus:outline-hidden" 
+            href="{{ $item['url'] }}" 
+            aria-current="{{ $item['isActive'] ? 'page' : 'false' }}">{{ $item['name'] }}</a>
+        @endforeach
       </div>
     </div>
   </nav>
