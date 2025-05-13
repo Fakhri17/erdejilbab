@@ -33,8 +33,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id(config('app.dashboard_path'))
+            ->path(config('app.dashboard_path'))
             ->profile(EditProfile::class)
             ->login()
             ->brandName($this->getApplicationName())
