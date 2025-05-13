@@ -67,7 +67,11 @@ class ProductResource extends Resource
                             ->image()
                             ->multiple()
                             ->imageEditor()
+                            ->maxSize(2048)
                             ->directory('products')
+                            ->helperText('Ukuran maksimal 2MB')
+                            ->panelLayout('grid')
+                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
                             ->columnSpanFull(),
 
 
@@ -99,13 +103,24 @@ class ProductResource extends Resource
                             ->label('Shopee Link')
                             ->url()
                             ->placeholder('https://shopee.co.id/product/1234567890'),
+
                         
+                    ])
+                    ->columns(2)
+                    ->columnSpan(2),
+                Section::make('Publish')
+                    ->schema([
+
+                        Checkbox::make('is_best_seller')
+                            ->label('Produk Unggulan (Best Seller)'),
                         Checkbox::make('is_published')
                             ->label('Is Published')
                             ->helperText('Centang jika produk sudah siap dipublikasikan.'),
+
                     ])
-                    ->columns(2),
-            ]);
+                    ->columnSpan(1)
+            ])
+            ->columns(3);
     }
 
     public static function table(Table $table): Table
@@ -130,6 +145,13 @@ class ProductResource extends Resource
                     ->getStateUsing(fn($record) => $record->is_published ? 'Published' : 'Draft')
                     ->color(fn($record) => $record->is_published ? 'success' : 'danger')
                     ->icon(fn($record) => $record->is_published ? 'heroicon-o-check-circle' : 'heroicon-o-x-circle')
+                    ->sortable(),
+                TextColumn::make('is_best_seller')
+                    ->label('Best Seller')
+                    ->badge()
+                    ->getStateUsing(fn($record) => $record->is_best_seller ? 'Ya' : 'Tidak')
+                    ->color(fn($record) => $record->is_best_seller ? 'success' : 'secondary')
+                    ->icon(fn($record) => $record->is_best_seller ? 'heroicon-o-star' : null)
                     ->sortable(),
             ])->filters([
                 //

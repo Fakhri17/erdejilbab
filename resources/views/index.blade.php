@@ -95,19 +95,27 @@
         <p class="text-base text-gray-700 font-medium mb-3 lg:mb-0">Pilihan Terbaik untuk Tampil Cantik dan Syar'i Setiap
           Hari</p>
         <a href="{{ route('products.index') }}"
-          class="font-bold texprry hover:text-[#E48786] flex items-center gap-2">Lihat Semua
+          class="font-bold text-primary hover:underline flex items-center gap-2">Lihat Semua
           <iconify-icon icon="ep:arrow-right-bold"></iconify-icon></a>
       </div>
 
       <div
-        class="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-secondary rounded-full opacity-50 blur-3xl">
+        class="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-secondary/50 rounded-full opacity-50 blur-3xl">
       </div>
       <div class="relative z-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Produk Card -->
-          @foreach ($products as $product)
-            <x-product_list :product="$product" />
-          @endforeach
+          @if ($products->isEmpty())
+            <div class="col-span-full text-center mt-12">
+              <div class="bg-primary/30 border-l-4 border-primary p-4 rounded">
+                <p class="text-gray-800 font-bold text-2xl">Tidak ada produk unggulan yang ditemukan</p>
+              </div>
+            </div>
+          @else
+            @foreach ($products as $product)
+              <x-product_list :product="$product" />
+            @endforeach
+          @endif
 
         </div>
       </div>

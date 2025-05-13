@@ -18,11 +18,13 @@ class Product extends Model
         'product_category_id',
         'tiktok_link',
         'shopee_link',
+        'is_best_seller',
     ];
 
     protected $casts = [
         'product_images' => 'array',
         'is_published' => 'boolean',
+        'is_best_seller' => 'boolean',
     ];
 
     public function category()
