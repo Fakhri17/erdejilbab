@@ -25,7 +25,8 @@ class ProductCategoryResource extends Resource
 {
     protected static ?string $model = ProductCategory::class;
 
-    protected static ?string $navigationLabel = 'Product Category';
+    protected static ?string $navigationLabel = 'Kategori Produk';
+    protected static ?string $pluralModelLabel = 'Kategori Produk';
     protected static ?int $navigationSort = 3;
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
@@ -72,8 +73,10 @@ class ProductCategoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->color('info'),
+                Tables\Actions\DeleteAction::make()
+                    ->color('danger'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

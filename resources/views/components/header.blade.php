@@ -1,22 +1,23 @@
 @php
-$navItems = [
-    [
-        'name' => 'Beranda',
-        'url' => '/',
-        'isActive' => request()->is('/')
-    ],
-    [
-        'name' => 'List Produk',
-        'url' => '/list-produk',
-        'isActive' => request()->is('list-produk*')
-    ]
-];
+  $navItems = [
+      [
+          'name' => 'Beranda',
+          'url' => '/',
+          'isActive' => request()->is('/'),
+      ],
+      [
+          'name' => 'List Produk',
+          'url' => '/list-produk',
+          'isActive' => request()->is('list-produk*'),
+      ],
+  ];
 @endphp
 
 <header class="relative flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-5 shadow">
   <nav class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between">
     <div class="flex items-center justify-between">
-      <a class="flex-none text-xl font-semibold focus:outline-hidden focus:opacity-80" href="{{ route('index') }}" aria-label="Brand">
+      <a class="flex-none text-xl font-semibold focus:outline-hidden focus:opacity-80" href="{{ route('index') }}"
+        aria-label="Brand">
         <img src="{{ asset('assets/logo-primary.png') }}" alt="Brand Logo" class="h-10">
       </a>
       <div class="sm:hidden">
@@ -45,11 +46,17 @@ $navItems = [
       class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow sm:block"
       aria-labelledby="hs-navbar-example-collapse">
       <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
-        @foreach($navItems as $item)
-          <a class="{{ $item['isActive'] ? 'font-bold text-secondary' : 'font-medium text-black' }} text-base hover:text-secondary focus:outline-hidden" 
-            href="{{ $item['url'] }}" 
-            aria-current="{{ $item['isActive'] ? 'page' : 'false' }}">{{ $item['name'] }}</a>
+        @foreach ($navItems as $item)
+          <a class="{{ $item['isActive'] ? 'font-bold text-secondary' : 'font-medium text-black' }} text-base hover:text-secondary focus:outline-hidden"
+            href="{{ $item['url'] }}" aria-current="{{ $item['isActive'] ? 'page' : 'false' }}">{{ $item['name'] }}</a>
         @endforeach
+        {{-- button to dashboard --}}
+        @if (Auth::check())
+          <a href="{{ route('filament.erde.pages.dashboard') }}"
+            class="px-4 py-2 bg-secondary text-white rounded-md font-medium hover:bg-secondary/80 focus:outline-hidden">
+            Dashboard
+          </a>
+        @endif
       </div>
     </div>
   </nav>

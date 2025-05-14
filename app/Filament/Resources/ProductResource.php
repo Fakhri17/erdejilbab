@@ -32,7 +32,8 @@ class ProductResource extends Resource
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
-    protected static ?string $navigationLabel = 'List Product';
+    protected static ?string $navigationLabel = 'List Produk';
+    protected static ?string $pluralModelLabel = 'List Produk';
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
@@ -164,8 +165,10 @@ class ProductResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->color('info'),
+                Tables\Actions\DeleteAction::make()
+                    ->color('danger'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
