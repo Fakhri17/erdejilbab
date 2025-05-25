@@ -41,6 +41,7 @@ class AdminPanelProvider extends PanelProvider
             ->homeUrl('/')
             ->sidebarCollapsibleOnDesktop()
             ->defaultThemeMode(ThemeMode::Light)
+            ->favicon(asset('favicon.ico'))
             ->colors([
                 'primary' => '#E48786',
             ])
