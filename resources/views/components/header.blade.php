@@ -47,13 +47,13 @@
       aria-labelledby="hs-navbar-example-collapse">
       <div class="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
         @foreach ($navItems as $item)
-          <a class="{{ $item['isActive'] ? 'font-bold text-secondary' : 'font-medium text-black' }} text-base hover:text-secondary focus:outline-hidden"
+          <a class="{{ $item['isActive'] ? 'font-bold text-primary' : 'font-medium text-black' }} text-base hover:text-primary focus:outline-hidden"
             href="{{ $item['url'] }}" aria-current="{{ $item['isActive'] ? 'page' : 'false' }}">{{ $item['name'] }}</a>
         @endforeach
         {{-- button to dashboard --}}
         @if (Auth::check())
           <a href="{{ route('filament.erde.pages.dashboard') }}"
-            class="px-4 py-2 bg-secondary text-white rounded-md font-medium hover:bg-secondary/80 focus:outline-hidden">
+            class="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/80 focus:outline-hidden">
             Dashboard
           </a>
         @endif

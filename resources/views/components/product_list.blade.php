@@ -4,7 +4,7 @@
 
 <div
   class="flex flex-col group bg-white border border-gray-200 shadow-2xs rounded-xl 
-              overflow-hidden hover:shadow-lg focus:outline-hidden focus:shadow-lg transition">
+              overflow-hidden shadow-xl shadow-primary/50 focus:outline-hidden focus:shadow-lg transition">
   <div class="relative pt-[50%] sm:pt-[60%] lg:pt-[80%] rounded-t-xl overflow-hidden">
     @if ($product->product_images)
       <img
@@ -28,7 +28,7 @@
           Rp{{ number_format($product->price, 0, ',', '.') }}
         </p>
         <div class="flex gap-2">
-         
+
           <a href="{{ route('products.show', $product->slug) }}"
             class="inline-block px-3 py-1.5 text-sm font-bold text-secondary rounded-md border border-gray-400 hover:border-secondary hover:bg-secondary hover:text-white transition duration-200">
             Lihat Produk

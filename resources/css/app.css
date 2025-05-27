@@ -3,13 +3,14 @@
 @import "../../node_modules/preline/variants.css";
 
 @theme {
-    --color-primary: #E48786;
+    --color-primary: #f7a09e;
     --color-secondary: #946756;
 }
 
 @layer base {
     body {
         font-family: 'Poppins', sans-serif;
+        background-color: var(--color-secondary);
     }
 
     .button-whatsapp {

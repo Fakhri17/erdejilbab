@@ -17,7 +17,7 @@
           <!-- Button Dropdown Kategori -->
           <div class="hs-dropdown relative inline-flex">
             <button id="hs-dropdown-example" type="button"
-              class="hs-dropdown-toggle py-2.5 px-5 inline-flex items-center gap-x-2 text-base font-medium border border-gray-300 rounded-md bg-white hover:bg-gray-100 shadow-md cursor-pointer"
+              class="hs-dropdown-toggle py-2.5 px-5 inline-flex items-center gap-x-2 text-base font-medium border border-gray-300 rounded-md bg-white hover:bg-gray-100 shadow-lg shadow-primary/50 cursor-pointer"
               aria-haspopup="menu" aria-expanded="false">
               {{ request('category') ? $categories->firstWhere('slug', request('category'))->name : 'Kategori' }}
               <svg class="hs-dropdown-open:rotate-180 size-4 text-gray-600" xmlns="http://www.w3.org/2000/svg"
@@ -51,9 +51,9 @@
             <input type="hidden" name="category" value="{{ request('category') }}">
           @endif
           <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Produk"
-            class="w-full px-4 py-2 text-sm font-light border border-gray-300 rounded-l-md focus:outline-none shadow-md" />
+            class="w-full px-4 py-2 text-sm font-light border border-gray-300 rounded-l-md focus:outline-none shadow-md bg-white" />
           <button type="submit"
-            class="bg-[#8B5E3C] hover:bg-[#7a4f31] text-white px-4 py-2 border border-gray-300 border-l-0 rounded-r-md shadow-md cursor-pointer flex items-center justify-center">
+            class="bg-primary hover:bg-[#f18787] text-white px-4 py-2 border border-gray-300 border-l-0 rounded-r-md shadow-md cursor-pointer flex items-center justify-center ">
             <iconify-icon icon="iconamoon:search" width="20" height="20"></iconify-icon>
           </button>
         </form>
@@ -66,10 +66,10 @@
     <div class="container mx-auto px-4 py-8">
       <!-- Judul -->
       <div class="flex items-center gap-2">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold">
-          Produk <span class="text-secondary">Erdejilbab</span>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+          Produk <span class="text-primary">Erdejilbab</span>
         </h1>
-        <span class="text-lg sm:text-xl md:text-2xl text-gray-500">({{ $products->total() }})</span>
+        <span class="text-lg sm:text-xl md:text-2xl text-gray-100">({{ $products->total() }})</span>
       </div>
 
       @if (request('search') && $products->isEmpty())
@@ -133,7 +133,7 @@
 
       <!-- Pagination Section -->
       <div class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="text-sm text-gray-800 font-semibold">
+        <div class="text-sm text-gray-100 font-semibold">
           Menampilkan {{ $products->firstItem() ?? 0 }} sampai {{ $products->lastItem() ?? 0 }} dari
           {{ $products->total() }} produk
         </div>
